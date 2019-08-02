@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+       <title>价格趋势图表</title>
+   </head>
+   <link rel="stylesheet" href="DataTables/css/layui.css"  media="all">
+   <link rel="stylesheet" type="text/css" href="DataTables/css/jQuery-ui.css">
+   <script type="text/javascript" src="Datatables/js/echarts.min.js"></script>
+       <!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script> -->
+       <!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script> -->
+      <!--  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script> -->
+       <!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script> -->
+       <script type="text/javascript" src="DataTables/js/jQuery.js"></script>
+       <script type="text/javascript" src="DataTables/js/charts.js"></script>
+       <script src="DataTables/js/layer/layer.js"></script>
+       <script src="DataTables/js/layui.js" charset="utf-8"></script>
+   <body style="height: 100%; margin: 0">
+    <ul class="layui-nav" lay-filter="">
+  <li class="layui-nav-item"><a href="index.html">主页</a></li>
+  <li class="layui-nav-item layui-this"><a href="upload.html">上传</a></li>
+  <li class="layui-nav-item"><a href="">大数据</a></li>
+  <li class="layui-nav-item">
+    <a href="javascript:;">解决方案</a>
+    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+      <dd><a href="">移动模块</a></dd>
+      <dd><a href="">后台模版</a></dd>
+      <dd><a href="">电商平台</a></dd>
+    </dl>
+  </li>
+  <li class="layui-nav-item"><a href="">社区</a></li>
+  </ul>
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript">
+           var loc = decodeURI(location.href);
+           var name = new Map();
+           name["name"] = loc.split("=")[1];
+           var url = "/data_table";
+           console.log(loc.split("=")[1]);
+           console.log(typeof loc.split("=")[1]);
+
+           $.ajax({
+                type: "post",
+                url: url,
+                contentType:"application/json",
+                data: JSON.stringify({"name": loc.split("=")[1]}),
+                dataType: 'json',
+               "success": function(result) {
+                    ChartGenerate(result);
+               },
+               "error": function (result) {
+                    alert(result.msg);
+               }
+           })
+           // ChartGenerate(loc)
+       </script>
+   </body>
+</html>

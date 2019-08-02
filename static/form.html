@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="DataTables/css/layui.css"  media="all">
+<link rel="stylesheet" type="text/css" href="DataTables/css/jQuery-ui.css">
+
+<!-- <script src="DataTables/js/layer/layer.js"></script> -->
+<script src="DataTables/js/layui.js" charset="utf-8"></script>
+<script src="DataTables/js/tables.js"></script>
+<script type="text/javascript"  src="DataTables/js/jQuery.js"></script>
+
+
+<body>
+  <!--<div class="layui-form-item">-->
+    <!--<label class="layui-form-label">选择框</label>-->
+    <!--<div class="layui-input-block">-->
+      <!--<select name="city">-->
+        <!--<option value=""></option>-->
+        <!--<option value="0">北京</option>-->
+        <!--<option value="1">上海</option>-->
+        <!--<option value="2">广州</option>-->
+        <!--<option value="3">深圳</option>-->
+        <!--<option value="4">杭州</option>-->
+      <!--</select>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="layui-form-item">-->
+    <!--<label class="layui-form-label">复选框</label>-->
+    <!--<div class="layui-input-block">-->
+      <!--<input type="checkbox" name="like[write]" title="写作">-->
+      <!--<input type="checkbox" name="like[read]" title="阅读" checked>-->
+      <!--<input type="checkbox" name="like[dai]" title="发呆">-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="layui-form-item">-->
+    <!--<label class="layui-form-label">开关</label>-->
+    <!--<div class="layui-input-block">-->
+      <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="layui-form-item">-->
+    <!--<label class="layui-form-label">单选框</label>-->
+    <!--<div class="layui-input-block">-->
+      <!--<input type="radio" name="sex" value="男" title="男">-->
+      <!--<input type="radio" name="sex" value="女" title="女" checked>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div class="layui-row" id="popSearchRoleTest" style="display:none;">
+    <form class="layui-form" action="" lay-filter="edit_form">
+  <div class="layui-form-item">
+    <label class="layui-form-label">材料名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="material_name" id="material_name" required  lay-verify="required" placeholder="请输入材料名称" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">价格</label>
+    <div class="layui-input-block">
+      <input type="text" name="prices" required  lay-verify="required" placeholder="请输入价格，多个价格以逗号分隔" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">日期</label>
+    <div class="layui-input-block">
+      <input type="text" name="period" required  lay-verify="required" placeholder="请输入日期（2019-1-1），多个年份以逗号分隔，并与上面价格一一对应" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">数值单位</label>
+    <div class="layui-input-block">
+      <input type="text" name="unit" required  lay-verify="required" placeholder="请输入单位" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">型号</label>
+    <div class="layui-input-block">
+      <input type="text" name="type" placeholder="请输入型号" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">规格</label>
+    <div class="layui-input-block">
+      <input type="text" name="specs" placeholder="请输入规格" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">项目地区</label>
+    <div class="layui-input-block">
+      <input type="text" name="areas" placeholder="请输入项目所属地区" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">项目名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="project" placeholder="请输入该材料关联的项目名称" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">品牌</label>
+    <div class="layui-input-block">
+      <textarea name="work_content" placeholder="请输入工作内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">备注</label>
+    <div class="layui-input-block">
+      <textarea name="remarks" placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" type="button" lay-submit lay-filter="formDemo">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+</div>
+
+</body>
+</html>

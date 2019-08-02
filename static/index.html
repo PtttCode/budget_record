@@ -1,0 +1,148 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>材料信息平台</title>
+<!-- footer -->
+<link rel="stylesheet" type="text/css" href="DataTables/css/footer.css">
+<!-- Datatables -->
+<link rel="stylesheet" href="DataTables/css/layui.css"  media="all">
+<link rel="stylesheet" type="text/css" href="DataTables/css/jQuery-ui.css">
+<!-- Bootstrap ???SS -->
+<link rel="stylesheet" href="DataTables/css/bootstrap.min.css" >
+
+<!-- Bootstrap ???JavaScript -->
+<script src="DataTables/js/jquery-3.2.1.slim.min.js"></script>
+<script src="DataTables/js/popper.min.js"></script>
+<script src="DataTables/js/bootstrap.min.js" ></script>
+<script src="DataTables/js/layer/layer.js"></script>
+<script src="DataTables/js/layui.js" charset="utf-8"></script>
+<script src="DataTables/js/tables.js"></script>
+<!-- jQuery -->
+<script type="text/javascript"  src="DataTables/js/jQuery.js"></script>
+
+
+<script type="text/html" id="table_right_btn">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+    <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+  </div>
+</script>
+
+<script type="text/html" id="table_bar">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<body>
+<ul class="layui-nav" lay-filter="">
+  <li class="layui-nav-item layui-this"><a href="">主页</a></li>
+  <li class="layui-nav-item"><a href="upload.html">上传</a></li>
+  <li class="layui-nav-item"><a href="">大数据</a></li>
+  <li class="layui-nav-item">
+    <a href="javascript:;">解决方案</a>
+    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+      <dd><a href="">移动模块</a></dd>
+      <dd><a href="">后台模版</a></dd>
+      <dd><a href="">电商平台</a></dd>
+    </dl>
+  </li>
+  <li class="layui-nav-item"><a href="">社区</a></li>
+</ul>
+<form class="form-inline mt-2 mt-md-0" onsubmit="return false;">
+  <input class="form-control mr-sm-2" type="text" name="question" lay-verify="title" autocomplete="off" placeholder="请输入关键字" aria-label="Search" onkeydown="keyup_submit(event)">
+  <button class="btn btn-primary" id="search_button">搜索</button>
+</form> 
+
+<table class="layui-table" id="test" lay-filter="test" lay-data="{id: 'idTest'}"></table>
+<!-- <footer class="footer">
+  <span class="text-muted">author:庞桐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;workplace：毕业设计</span>
+</footer> -->
+<!-- <div class="layui-footer footer footer-doc">
+  <div class="layui-main">
+    <span> 庞桐 </span>
+  </div>
+</div> -->
+
+<div class="layui-row" id="popSearchRoleTest" style="display:none;">
+    <form class="layui-form" action="" lay-filter="edit_form" id="edit_form">
+  <div class="layui-form-item">
+    <label class="layui-form-label">材料名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="material_name" id="material_name" required  lay-verify="required" placeholder="请输入材料名称" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">价格</label>
+    <div class="layui-input-block">
+      <input type="text" name="prices" id="prices" required  lay-verify="required" placeholder="请输入价格，多个价格以逗号分隔" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">日期</label>
+    <div class="layui-input-block">
+      <input type="text" name="period" id="period" required  lay-verify="required" placeholder="请输入日期（2019/1/1），多个年份以逗号分隔，并与上面价格一一对应" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">数值单位</label>
+    <div class="layui-input-block">
+      <input type="text" name="unit" id="unit" required  lay-verify="required" placeholder="请输入单位" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">型号</label>
+    <div class="layui-input-block">
+      <input type="text" name="type" id="type" placeholder="请输入型号" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">规格</label>
+    <div class="layui-input-block">
+      <input type="text" name="specs" id="specs" placeholder="请输入规格" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">项目地区</label>
+    <div class="layui-input-block">
+      <input type="text" name="areas" id="areas" placeholder="请输入项目所属地区" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">项目名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="project" id="project" placeholder="请输入该材料关联的项目名称" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">品牌</label>
+    <div class="layui-input-block">
+      <textarea name="brand" id="brand" placeholder="请输入工作内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">备注</label>
+    <div class="layui-input-block">
+      <textarea name="remarks" id="remarks" placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" type="button" lay-submit lay-filter="formDemo">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+</div>
+</body>
+</html>

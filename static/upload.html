@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>搜索-v0.1</title>
+
+<!-- footer -->
+<link rel="stylesheet" type="text/css" href="DataTables/css/footer.css">
+<!-- Datatables -->
+<link rel="stylesheet" href="DataTables/css/layui.css"  media="all">
+<link rel="stylesheet" type="text/css" href="DataTables/css/jQuery-ui.css">
+<!-- Bootstrap ???SS -->
+<link rel="stylesheet" href="DataTables/css/bootstrap.min.css" >
+
+<!-- Bootstrap ???JavaScript -->
+<script src="DataTables/js/jquery-3.2.1.slim.min.js"></script>
+<script src="DataTables/js/popper.min.js"></script>
+<script src="DataTables/js/bootstrap.min.js" ></script>
+<script src="DataTables/js/layer/layer.js"></script>
+<script src="DataTables/js/layui.js" charset="utf-8"></script>
+<!-- jQuery -->
+<script type="text/javascript"  src="DataTables/js/jQuery.js"></script>
+<script type="text/javascript">
+layui.use('upload', function() {
+    var upload = layui.upload; //得到 upload 对象
+
+    //创建一个上传组件
+    upload.render({
+        elem: '#upload'
+        , url: 'http://localhost:8888/upload'
+        , accept: "file"
+        , exts: "xlsx"
+        , auto: true
+        , drag: true
+        , multiple: true
+        , done: function (res) { //上传后的回调
+            console.log(res)
+            alert(res.msg);
+        }
+        ,error: function (res) {
+            console.log(res);
+            alert(res.msg)
+            return True;
+
+        }
+        //,accept: 'file' //允许上传的文件类型
+        //,size: 50 //最大允许上传的文件大小
+        //,……
+    })
+})
+</script>
+
+<style type="text/css" title="fading circle style">.circle-color-23 > div::before { background-color: #ccc; }</style>
+</head>
+<body>
+<ul class="layui-nav" lay-filter="">
+  <li class="layui-nav-item"><a href="index.html">主页</a></li>
+  <li class="layui-nav-item layui-this"><a href="upload.html">上传</a></li>
+  <li class="layui-nav-item"><a href="">大数据</a></li>
+  <li class="layui-nav-item">
+    <a href="javascript:;">解决方案</a>
+    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+      <dd><a href="">移动模块</a></dd>
+      <dd><a href="">后台模版</a></dd>
+      <dd><a href="">电商平台</a></dd>
+    </dl>
+  </li>
+  <li class="layui-nav-item"><a href="">社区</a></li>
+</ul>
+<div class="layui-upload-drag" id="upload">
+  <i class="layui-icon"></i>
+  <p>点击上传，或将文件拖拽到此处</p>
+</div>
+
+</body>
+</html>
