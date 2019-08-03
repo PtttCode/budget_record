@@ -1,0 +1,6 @@
+flask
+pymongo
+pandas
+numpy
+flask_restful
+ptttloggg
