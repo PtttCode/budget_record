@@ -1,6 +1,7 @@
 flask
 pymongo
-pandas
+pandas==0.23.4
 numpy
 flask_restful
 ptttloggg
+elasticsearch
